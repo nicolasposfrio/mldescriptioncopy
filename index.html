@@ -1,57 +1,45 @@
 <!doctype html>
 <html lang="pt-BR">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Texto copiado</title>
-  <style>
-    body {
-      font-family: 'Segoe UI', Roboto, Arial, sans-serif;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      height: 100vh;
-      margin: 0;
-      background: linear-gradient(135deg, #4a90e2, #007aff);
-      color: #fff;
-    }
-    .container {
-      background: rgba(255, 255, 255, 0.15);
-      backdrop-filter: blur(8px);
-      border-radius: 16px;
-      padding: 30px 40px;
-      text-align: center;
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
-      max-width: 400px;
-    }
-    .check {
-      font-size: 48px;
-      margin-bottom: 15px;
-    }
-    h1 {
-      font-size: 1.4rem;
-      margin: 0 0 10px 0;
-    }
-    p {
-      font-size: 0.95rem;
-      opacity: 0.85;
-      margin: 0;
-    }
-    #copyBtn {
-      display: none; /* invisível */
-    }
-  </style>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Copiar texto com clique</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background: #007aff;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  button {
+    background: white;
+    color: #007aff;
+    border: none;
+    padding: 15px 25px;
+    border-radius: 8px;
+    font-weight: bold;
+    font-size: 1rem;
+    cursor: pointer;
+  }
+  #status {
+    margin-top: 15px;
+    text-align: center;
+    font-weight: 600;
+  }
+</style>
 </head>
 <body>
-  <div class="container">
-    <div class="check">✔</div>
-    <h1>Texto copiado com sucesso</h1>
-    <p>Você já pode colar o conteúdo onde precisar.</p>
-    <button id="copyBtn">Copiar</button>
-  </div>
 
-  <script>
-    const textoParaCopiar = `PROMPT PARA GERAR DESCRIÇÃO DE ANÚNCIOS NO MERCADO LIVRE COM PESQUISA PRÉVIA (TÍTULO ≤ 60 CARACTERES, FORMATO F.A.B, TEXTO PURO)
+<div>
+  <button id="btnCopy">Copiar texto</button>
+  <div id="status" aria-live="polite"></div>
+</div>
+
+<script>
+  const textoParaCopiar = `PROMPT PARA GERAR DESCRIÇÃO DE ANÚNCIOS NO MERCADO LIVRE COM PESQUISA PRÉVIA (TÍTULO ≤ 60 CARACTERES, FORMATO F.A.B, TEXTO PURO)
 
 INSTRUÇÃO GERAL:
 Você é um especialista em SEO para e-commerce e anúncios do Mercado Livre. Antes de criar a descrição, pesquise na web e em fontes confiáveis todas as características técnicas e comerciais do produto informado, incluindo:
@@ -122,33 +110,19 @@ CONTEÚDO DA EMBALAGEM:
 CHAMADO À AÇÃO:
 Pronto para {benefício principal}? Compre agora e receba com Mercado Envios.`;
 
-    async function copiarTexto() {
-      try {
-        if (navigator.clipboard && navigator.clipboard.writeText) {
-          await navigator.clipboard.writeText(textoParaCopiar);
-          console.log("Texto copiado com sucesso.");
-        } else {
-          const ta = document.createElement("textarea");
-          ta.value = textoParaCopiar;
-          ta.style.position = "fixed";
-          ta.style.opacity = "0";
-          document.body.appendChild(ta);
-          ta.focus();
-          ta.select();
-          document.execCommand("copy");
-          document.body.removeChild(ta);
-          console.log("Texto copiado (fallback).");
-        }
-      } catch (err) {
-        console.error("Erro ao copiar:", err);
-      }
+  const btnCopy = document.getElementById('btnCopy');
+  const status = document.getElementById('status');
+
+  btnCopy.addEventListener('click', async () => {
+    try {
+      await navigator.clipboard.writeText(textoParaCopiar);
+      status.textContent = 'Texto copiado para a área de transferência.';
+    } catch (e) {
+      status.textContent = 'Erro ao copiar o texto.';
+      console.error(e);
     }
+  });
+</script>
 
-    window.addEventListener("load", () => {
-      document.getElementById("copyBtn").click();
-    });
-
-    document.getElementById("copyBtn").addEventListener("click", copiarTexto);
-  </script>
 </body>
 </html>
