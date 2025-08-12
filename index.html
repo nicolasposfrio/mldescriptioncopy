@@ -48,7 +48,77 @@
 
   <script>
     // Texto que será copiado automaticamente
-    const textoParaCopiar = "Cole aqui o texto que deseja copiar automaticamente.";
+    const textoParaCopiar = "
+PROMPT PARA GERAR DESCRIÇÃO DE ANÚNCIOS NO MERCADO LIVRE COM PESQUISA PRÉVIA (TÍTULO ≤ 60 CARACTERES, FORMATO F.A.B, TEXTO PURO)
+
+INSTRUÇÃO GERAL:
+Você é um especialista em SEO para e-commerce e anúncios do Mercado Livre. Antes de criar a descrição, pesquise na web e em fontes confiáveis todas as características técnicas e comerciais do produto informado, incluindo:
+
+Categoria mais específica no Mercado Livre
+
+Marca e modelo exatos
+
+GTIN/EAN
+
+Condição (novo, usado, recondicionado)
+
+Atributos técnicos (voltagem, cor, tamanho, capacidade, material, etc.)
+
+Compatibilidade (para peças) e códigos originais equivalentes
+
+Conteúdo da embalagem
+
+Dimensões e peso
+
+Uso e aplicação
+
+Diferenciais e benefícios reais
+
+Certificações (INMETRO, ABNT, etc., se houver)
+
+Palavras-chave relevantes (primárias e secundárias)
+
+REGRAS IMPORTANTES:
+
+Não incluir informações falsas
+
+Não colocar dados de contato, links externos ou promessas que violem as políticas do Mercado Livre
+
+Usar tom profissional, claro e objetivo
+
+O título deve ter até 60 caracteres e seguir o formato: Marca + Modelo + Atributo-chave principal + Outros atributos relevantes + Quantidade (se aplicável)
+
+A descrição deve seguir o formato F.A.B (Features, Advantages, Benefits), totalmente em texto simples, sem marcadores ou formatação especial
+
+ESTRUTURA DA SAÍDA:
+
+TÍTULO:
+{título otimizado, objetivo e dentro do limite de 60 caracteres}
+
+DESCRIÇÃO F.A.B:
+Features (Características): descreva de forma objetiva os principais atributos técnicos do produto, como material, dimensões, compatibilidade, potência, capacidade, modelo, GTIN/EAN, conteúdo da embalagem e certificações.
+Advantages (Vantagens): explique de forma clara como essas características tornam o produto superior ou mais conveniente que alternativas disponíveis no mercado, destacando desempenho, durabilidade, economia, facilidade de uso ou instalação.
+Benefits (Benefícios): apresente os ganhos reais que o comprador terá ao adquirir o produto, como segurança, conforto, eficiência, economia de tempo ou melhor experiência de uso.
+
+FICHA TÉCNICA:
+Marca: {marca}
+Modelo/Ref.: {modelo}
+GTIN/EAN: {ean}
+{atributo 1}: {valor}
+{atributo 2}: {valor}
+{atributo 3}: {valor}
+Dimensões (C x L x A): {cm} — Peso: {kg}
+
+COMPATIBILIDADE (quando aplicável):
+Modelos compatíveis: {lista}
+Códigos originais equivalentes: {lista}
+
+CONTEÚDO DA EMBALAGEM:
+{item 1}
+{item 2}
+
+CHAMADO À AÇÃO:
+Pronto para {benefício principal}? Compre agora e receba com Mercado Envios.";
 
     async function copiarTexto() {
       try {
@@ -76,3 +146,4 @@
   </script>
 </body>
 </html>
+
