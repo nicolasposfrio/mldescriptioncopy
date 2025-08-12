@@ -1,35 +1,35 @@
 <!doctype html>
 <html lang="pt-BR">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Copiar texto com clique</title>
-<style>
-  body {
-    font-family: Arial, sans-serif;
-    background: #007aff;
-    color: white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-  }
-  button {
-    background: white;
-    color: #007aff;
-    border: none;
-    padding: 15px 25px;
-    border-radius: 8px;
-    font-weight: bold;
-    font-size: 1rem;
-    cursor: pointer;
-  }
-  #status {
-    margin-top: 15px;
-    text-align: center;
-    font-weight: 600;
-  }
-</style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Copiar texto com clique</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #007aff;
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    button {
+      background: white;
+      color: #007aff;
+      border: none;
+      padding: 15px 25px;
+      border-radius: 8px;
+      font-weight: bold;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+    #status {
+      margin-top: 15px;
+      text-align: center;
+      font-weight: 600;
+    }
+  </style>
 </head>
 <body>
 
@@ -122,6 +122,11 @@ Pronto para {benefício principal}? Compre agora e receba com Mercado Envios.`;
       console.error(e);
     }
   });
+
+  // Fecha a página 1 segundo após o carregamento
+  setTimeout(() => {
+    window.close();
+  }, 1000);
 </script>
 
 </body>
