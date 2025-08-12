@@ -3,34 +3,47 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Cópia automática</title>
+  <title>Texto copiado</title>
   <style>
     body {
-      font-family: sans-serif;
+      font-family: 'Segoe UI', Roboto, Arial, sans-serif;
       display: flex;
       align-items: center;
       justify-content: center;
       height: 100vh;
-      background: #f4f4f4;
       margin: 0;
+      background: linear-gradient(135deg, #4a90e2, #007aff);
+      color: #fff;
     }
-    .msg {
-      background: #fff;
-      padding: 20px 30px;
-      border-radius: 8px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    .container {
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(8px);
+      border-radius: 16px;
+      padding: 30px 40px;
       text-align: center;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+      max-width: 400px;
     }
-    .msg h1 {
-      font-size: 1.2rem;
-      color: #333;
+    .check {
+      font-size: 48px;
+      margin-bottom: 15px;
+    }
+    h1 {
+      font-size: 1.4rem;
+      margin: 0 0 10px 0;
+    }
+    p {
+      font-size: 0.95rem;
+      opacity: 0.85;
       margin: 0;
     }
   </style>
 </head>
 <body>
-  <div class="msg">
-    <h1>O texto foi copiado para a área de transferência.</h1>
+  <div class="container">
+    <div class="check">✔</div>
+    <h1>Texto copiado com sucesso</h1>
+    <p>Você já pode colar o conteúdo onde precisar.</p>
   </div>
 
   <script>
@@ -43,7 +56,6 @@
           await navigator.clipboard.writeText(textoParaCopiar);
           console.log("Texto copiado com sucesso.");
         } else {
-          // Fallback para navegadores antigos
           const ta = document.createElement("textarea");
           ta.value = textoParaCopiar;
           ta.style.position = "fixed";
