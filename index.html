@@ -4,21 +4,46 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Cópia automática</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      background: #f4f4f4;
+      margin: 0;
+    }
+    .msg {
+      background: #fff;
+      padding: 20px 30px;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+    .msg h1 {
+      font-size: 1.2rem;
+      color: #333;
+      margin: 0;
+    }
+  </style>
 </head>
 <body>
-  <p style="font-family:sans-serif;text-align:center;margin-top:30px;">
-    O texto foi copiado para a área de transferência.
-  </p>
+  <div class="msg">
+    <h1>O texto foi copiado para a área de transferência.</h1>
+  </div>
 
   <script>
+    // Texto que será copiado automaticamente
     const textoParaCopiar = "Cole aqui o texto que deseja copiar automaticamente.";
 
-    async function copiar() {
+    async function copiarTexto() {
       try {
         if (navigator.clipboard && navigator.clipboard.writeText) {
           await navigator.clipboard.writeText(textoParaCopiar);
           console.log("Texto copiado com sucesso.");
         } else {
+          // Fallback para navegadores antigos
           const ta = document.createElement("textarea");
           ta.value = textoParaCopiar;
           ta.style.position = "fixed";
@@ -35,7 +60,7 @@
       }
     }
 
-    window.addEventListener("load", copiar);
+    window.addEventListener("load", copiarTexto);
   </script>
 </body>
 </html>
