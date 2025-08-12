@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Cópia automática</title>
+</head>
+<body>
+  <p>O texto foi copiado para a área de transferência.</p>
+
+  <script>
+    // Texto que será copiado
+    const textoParaCopiar = "Este é o texto que será copiado automaticamente ao abrir o link.";
+
+    async function copiar() {
+      try {
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          await navigator.clipboard.writeText(textoParaCopiar);
+          console.log("Texto copiado com sucesso.");
+        } else {
+          // fallback para navegadores mais antigos
+          const ta = document.createElement("textarea");
+          ta.value = textoParaCopiar;
+          ta.style.position = "fixed";
+          ta.style.opacity = "0";
+          document.body.appendChild(ta);
+          ta.focus();
+          ta.select();
+          document.execCommand("copy");
+          document.body.removeChild(ta);
+          console.log("Texto copiado (fallback).");
+        }
+      } catch (err) {
+        console.error("Erro ao copiar:", err);
+      }
+    }
+
+    // Executa automaticamente ao carregar a página
+    window.addEventListener("load", copiar);
+  </script>
+</body>
+</html>
