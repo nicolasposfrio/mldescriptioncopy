@@ -37,6 +37,9 @@
       opacity: 0.85;
       margin: 0;
     }
+    #copyBtn {
+      display: none; /* invisível */
+    }
   </style>
 </head>
 <body>
@@ -44,12 +47,11 @@
     <div class="check">✔</div>
     <h1>Texto copiado com sucesso</h1>
     <p>Você já pode colar o conteúdo onde precisar.</p>
+    <button id="copyBtn">Copiar</button>
   </div>
 
   <script>
-    // Texto que será copiado automaticamente
-    const textoParaCopiar = "
-PROMPT PARA GERAR DESCRIÇÃO DE ANÚNCIOS NO MERCADO LIVRE COM PESQUISA PRÉVIA (TÍTULO ≤ 60 CARACTERES, FORMATO F.A.B, TEXTO PURO)
+    const textoParaCopiar = `PROMPT PARA GERAR DESCRIÇÃO DE ANÚNCIOS NO MERCADO LIVRE COM PESQUISA PRÉVIA (TÍTULO ≤ 60 CARACTERES, FORMATO F.A.B, TEXTO PURO)
 
 INSTRUÇÃO GERAL:
 Você é um especialista em SEO para e-commerce e anúncios do Mercado Livre. Antes de criar a descrição, pesquise na web e em fontes confiáveis todas as características técnicas e comerciais do produto informado, incluindo:
@@ -118,7 +120,7 @@ CONTEÚDO DA EMBALAGEM:
 {item 2}
 
 CHAMADO À AÇÃO:
-Pronto para {benefício principal}? Compre agora e receba com Mercado Envios.";
+Pronto para {benefício principal}? Compre agora e receba com Mercado Envios.`;
 
     async function copiarTexto() {
       try {
@@ -142,8 +144,11 @@ Pronto para {benefício principal}? Compre agora e receba com Mercado Envios.";
       }
     }
 
-    window.addEventListener("load", copiarTexto);
+    window.addEventListener("load", () => {
+      document.getElementById("copyBtn").click();
+    });
+
+    document.getElementById("copyBtn").addEventListener("click", copiarTexto);
   </script>
 </body>
 </html>
-
